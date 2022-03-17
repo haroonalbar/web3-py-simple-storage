@@ -7,6 +7,9 @@ import json
 # import Web3
 from web3 import Web3
 
+# import os
+import os
+
 # using simplestorage in python
 with open("./SimpleStorage.sol", "r") as file:
     simple_storage_file = file.read()
@@ -60,7 +63,12 @@ my_address = "0xab7f92c3f0eb6b803003C437d5efB3Fb446c3EbF"
 # for signing transactions we need private_key
 # it is not safe to put the private_key directly in the code
 # add 0x in the private_key
-private_key = "0xcffe69482e26a992367f6594bf3170f02a7ca9de38895ee120ab5eeae2602b92"
+#
+# access the private key fom environment variable
+# private_key = os.getenv("PRIVATE_KEY")
+private_key = os.environ.get("PRIVATE_KEY")
+print(private_key)
+print(os.environ["PRIVATE_KEY"])
 
 # create contract in python
 SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
@@ -84,4 +92,4 @@ transaction = SimpleStorage.constructor().buildTransaction(
 )
 # print(transaction)
 # signing the tranction
-signed_txn = W3.eth.account.sign_transaction(transaction, private_key=private_key)
+# signed_txn = w3.eth.account.sign_transaction(transaction, private_key=private_key)
