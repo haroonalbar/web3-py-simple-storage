@@ -10,6 +10,13 @@ from web3 import Web3
 # import os
 import os
 
+# import environment
+from dotenv import load_dotenv
+
+load_dotenv()
+# it automatically looks for .env file and imports it into our script
+
+
 # using simplestorage in python
 with open("./SimpleStorage.sol", "r") as file:
     simple_storage_file = file.read()
@@ -65,10 +72,13 @@ my_address = "0xab7f92c3f0eb6b803003C437d5efB3Fb446c3EbF"
 # add 0x in the private_key
 #
 # access the private key fom environment variable
-# private_key = os.getenv("PRIVATE_KEY")
-private_key = os.environ.get("PRIVATE_KEY")
-print(private_key)
-print(os.environ["PRIVATE_KEY"])
+private_key = os.getenv("PRIVATE_KEY")
+# private_key = os.environ.get("PRIVATE_KEY")
+# print(private_key)
+# print(os.environ["PRIVATE_KEY"])
+# another way is creating a .env file
+# .env to .gitignore so wedont accidently push it to github
+print(os.getenv("BOOM"))
 
 # create contract in python
 SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
