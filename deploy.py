@@ -7,6 +7,16 @@ import json
 # import Web3
 from web3 import Web3
 
+# import os
+import os
+
+# import environment
+from dotenv import load_dotenv
+
+load_dotenv()
+# it automatically looks for .env file and imports it into our script
+
+
 # using simplestorage in python
 with open("./SimpleStorage.sol", "r") as file:
     simple_storage_file = file.read()
@@ -60,7 +70,15 @@ my_address = "0xab7f92c3f0eb6b803003C437d5efB3Fb446c3EbF"
 # for signing transactions we need private_key
 # it is not safe to put the private_key directly in the code
 # add 0x in the private_key
-private_key = "0xcffe69482e26a992367f6594bf3170f02a7ca9de38895ee120ab5eeae2602b92"
+#
+# access the private key fom environment variable
+private_key = os.getenv("PRIVATE_KEY")
+# private_key = os.environ.get("PRIVATE_KEY")
+print(private_key)
+# print(os.environ["PRIVATE_KEY"])
+# another way is creating a .env file
+# .env to .gitignore so wedont accidently push it to github
+# print(os.getenv("BOOM"))
 
 # create contract in python
 SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
@@ -68,7 +86,7 @@ SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
 
 # get latest transaction
 nonce = w3.eth.getTransactionCount(my_address)
-print(nonce)
+# print(nonce)
 # we wil get 0 because there is no transaction done yet
 
 # need to build sign and send transaction
@@ -84,4 +102,4 @@ transaction = SimpleStorage.constructor().buildTransaction(
 )
 # print(transaction)
 # signing the tranction
-signed_txn = W3.eth.account.sign_transaction(transaction, private_key=private_key)
+# signed_txn = w3.eth.account.sign_transaction(transaction, private_key=private_key)
