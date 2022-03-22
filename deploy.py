@@ -74,7 +74,7 @@ my_address = "0xab7f92c3f0eb6b803003C437d5efB3Fb446c3EbF"
 # access the private key fom environment variable
 private_key = os.getenv("PRIVATE_KEY")
 # private_key = os.environ.get("PRIVATE_KEY")
-print(private_key)
+# print(private_key)
 # print(os.environ["PRIVATE_KEY"])
 # another way is creating a .env file
 # .env to .gitignore so wedont accidently push it to github
@@ -102,4 +102,14 @@ transaction = SimpleStorage.constructor().buildTransaction(
 )
 # print(transaction)
 # signing the tranction
-# signed_txn = w3.eth.account.sign_transaction(transaction, private_key=private_key)
+signed_txn = w3.eth.account.sign_transaction(transaction, private_key=private_key)
+# print(signed_txn)
+# send this transaction
+tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+# wait for block conformation
+tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+
+# working with contract : you need
+# contract address
+# contract abi
+simple_storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
