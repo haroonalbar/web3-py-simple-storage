@@ -42,6 +42,28 @@ to print the private in the command line
 
 .env can be accessed directly with python dotenv package 
 
+**developers merged ganache-core and ganache-cli to just ganache**
+*so use ganache insted of ganache-cli*
+close ganache ui and install ganache cli => brown is going to use in the background
+this will install ganache-cli as a global command in terminal
+to install ganache cli download node.js
+node --version
+
+install yarn => is a packagemanager like pip
+  npm install --global yarn
+  yarn --version
+
+install ganachecli
+  yarn global add ganache
+  ganache --version
+  *if facing error*
+  npm install -g ganache --user
+  ganache --version
+
+*to run a local blockchain from command line*
+  ganache
+  
+
 
 
      
