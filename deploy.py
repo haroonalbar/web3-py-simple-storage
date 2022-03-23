@@ -113,3 +113,22 @@ tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 # contract address
 # contract abi
 simple_storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
+# there are 2 ways to intract with blockchain
+# call and transact
+# call -> making the call and getting a return value -- no state in the blockchain
+# transact -> when we acctually make a state change
+
+# initial value of favorite number
+print(simple_storage.functions.retrieve().call())
+
+# creating a transaction
+store_transaction(
+    simple_storage.functions.store(15).buildTransaction(
+        {
+            "gasPrice": w3.eth.gas_price,
+            "chainId": w3.eth.chain_id,
+            "from": my_address,
+            "nonce": nonce + 1,
+        }
+    )
+)
