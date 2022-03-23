@@ -90,7 +90,7 @@ nonce = w3.eth.getTransactionCount(my_address)
 # we wil get 0 because there is no transaction done yet
 
 # need to build sign and send transaction
-
+print("Deploying contract...")
 # SimpleStorage dosent have a construcror
 transaction = SimpleStorage.constructor().buildTransaction(
     {
@@ -108,6 +108,8 @@ signed_txn = w3.eth.account.sign_transaction(transaction, private_key=private_ke
 tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
 # wait for block conformation
 tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+print("Deployed!")
+
 
 # working with contract : you need
 # contract address
@@ -121,20 +123,26 @@ simple_storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
 # initial value of favorite number
 print(simple_storage.functions.retrieve().call())
 
+print("Updating contract...")
 # creating a transaction
-store_transaction(
-    simple_storage.functions.store(15).buildTransaction(
-        {
-            "gasPrice": w3.eth.gas_price,
-            "chainId": w3.eth.chain_id,
-            "from": my_address,
-            "nonce": nonce + 1,
-        }
-    )
+store_transaction = simple_storage.functions.store(15).buildTransaction(
+    {
+        "gasPrice": w3.eth.gas_price,
+        "chainId": w3.eth.chain_id,
+        "from": my_address,
+        "nonce": nonce + 1,
+    }
 )
-
+# sign the transaction
 signed_stored_txn = w3.eth.account.sign_transaction(
     store_transaction, private_key=private_key
 )
+
+# send the transaction
 send_store_tx = w3.eth.send_raw_transaction(signed_stored_txn.rawTransaction)
+# wait for the transaction
 tx_receipt = w3.eth.wait_for_transaction_receipt(send_store_tx)
+print("Updated!")
+
+# call retrieve
+print(simple_storage.functions.retrieve().call())
