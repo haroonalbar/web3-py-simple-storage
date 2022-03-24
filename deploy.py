@@ -57,15 +57,20 @@ abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 # print(abi)
 
 # for connecting to ganache
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
+# for connecting to rinkby
+w3 = Web3(
+    Web3.HTTPProvider("https://rinkeby.infura.io/v3/d67882f1f7a548a1886e9fb691942710")
+)
 
 # get chain_id or networkid
-chain_id = 1337
+# rinkby chainid
+chain_id = 4
 # lot of error 5777 to 1337 not working
 # so
 
 # add an address fom ganache
-my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
+# rinkby address
+my_address = "0x2479111c7e372E1E5E83Bd03dD33d30e922e493d"
 
 # for signing transactions we need private_key
 # it is not safe to put the private_key directly in the code

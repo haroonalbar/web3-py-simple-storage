@@ -1,10 +1,10 @@
-Create simplesrorage.sol
+Create **simplesrorage.sol**
 
 Settings format on save on for both python and solidity
 
 
 Python 
- Black formator for pyrhon 
+ *Black* formator for python 
    Pip install black
      Settings python formatting privider select black
 
@@ -16,23 +16,23 @@ New file
 
 Compiler for python
 
-Py solcx
+*Py solcx*
 Install
  pip install py-solc-x
 and
 not really need to install solc but just in case 
 npm install -g solc
 
-install and open ganache
+install and open *ganache* ui
 quickstart 
 
-web3.py
-pip install web3
-had problem installing web3 
-pip install web3 --user
-this will install as administrator an fixed it
- deploy it
-<class 'web3._utils.datatypes.Contract'>  is shown
+*web3.py*
+  pip install web3
+  had problem installing web3 
+  pip install web3 --user
+  this will install as administrator an fixed it
+  deploy it
+  <class 'web3._utils.datatypes.Contract'>  is shown
 
 setting envirement variable so we dont have to hard code our private key into our code directly " this is also not the best way"
 
@@ -41,6 +41,7 @@ comtline >echo %private_key%
 to print the private in the command line
 
 .env can be accessed directly with python dotenv package 
+  npm install dotenv --save
 
 **developers merged ganache-core and ganache-cli to just ganache**
 *so use ganache insted of ganache-cli*
@@ -75,7 +76,13 @@ infura  =>
           go to infura.io and register for free 
           alchemy.com is another option
           in infura change endpoint to rinkby
-          the copy the url and paste it in the new url
+          the copy the url
+          change the  http provider to url
+                      chainId *chainid.network to find out* for rinkby its 4
+                      address from metamask
+                      privatekey from metamask
+                      source.env in command for the env to update in windows and linux
+
 
 
 
