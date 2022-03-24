@@ -64,8 +64,18 @@ install ganachecli
   ganache *it will create random accounts everytime*
   gancache -d *determinstic/same account*
   it will be listening to 127.0.0.1 *this is called loopback address or local address*
-  update private key and address as in the command line
+  update :private key 
+          address
+          http provider / RPC url
 
+*to change from local blockchain to main net or test net all we have to do is change the RPC url/ http provider*
+we can also run our own blockchain node similar to running our local blockchain node
+but its not easy to do so we can use 3rd party like infura to run a blockchain for us
+infura  =>  
+          go to infura.io and register for free 
+          alchemy.com is another option
+          in infura change endpoint to rinkby
+          the copy the url and paste it in the new url
 
 
 

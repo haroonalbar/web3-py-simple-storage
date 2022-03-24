@@ -57,7 +57,7 @@ abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 # print(abi)
 
 # for connecting to ganache
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:6755"))
+w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
 
 # get chain_id or networkid
 chain_id = 1337
@@ -65,7 +65,7 @@ chain_id = 1337
 # so
 
 # add an address fom ganache
-my_address = "0xab7f92c3f0eb6b803003C437d5efB3Fb446c3EbF"
+my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
 
 # for signing transactions we need private_key
 # it is not safe to put the private_key directly in the code
