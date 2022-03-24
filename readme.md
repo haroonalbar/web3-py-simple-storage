@@ -61,8 +61,11 @@ install ganachecli
   ganache --version
 
 *to run a local blockchain from command line*
-  ganache
-  
+  ganache *it will create random accounts everytime*
+  gancache -d *determinstic/same account*
+  it will be listening to 127.0.0.1 *this is called loopback address or local address*
+  update private key and address as in the command line
+
 
 
 
